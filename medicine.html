@@ -78,14 +78,28 @@ function toggleDetails(event) {
 }
 const urlParams = new URLSearchParams(window.location.search);
 const patientId = urlParams.get('id');
+function redirectToPatientPage(patientId) {
+  console.log(patientId)
+  // 構建 JSON 檔案路徑
+  const jsonFilePath = `patients_json/patient${patientId}.json`;
 
-// 顯示病人 ID
+  // 使用 fetch 來異步載入 JSON 資料
+  fetch(jsonFilePath)
+    .then(response => response.json())
+    .then(patientData => {
+    const patientName = patientData.name;
+    document.getElementById('patientIdDisplay').innerText = patientName
+    })
+    .catch(error => console.error('發生錯誤：', error));
+}
+
+/*
 if (patientId) {
   document.getElementById('patientIdDisplay').innerText = '王XX';
   // 在這裡可以根據病人 ID 進行相應的資料處理
 } else {
   document.getElementById('patientIdDisplay').innerText = '未指定病人ID';
-}
+}*/
 </script>
 
 </body>
