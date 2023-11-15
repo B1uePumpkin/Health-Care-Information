@@ -20,7 +20,7 @@
 
 <div class="patient-info">
   <header>
-    <div>病人姓名：</div>
+    <div>病人姓名：<div id="patientIdDisplay"></div></div>
     <div>病歷號碼：</div>
     <div>病房號碼：</div>
     <div>住院日期：</div>
@@ -75,6 +75,16 @@ function toggleDetails(event) {
   var detailRow = event.currentTarget.nextElementSibling;
   // 切換詳細資料行的顯示與隱藏
   detailRow.style.display = detailRow.style.display === 'table-row' ? 'none' : 'table-row';
+}
+const urlParams = new URLSearchParams(window.location.search);
+const patientId = urlParams.get('id');
+
+// 顯示病人 ID
+if (patientId) {
+  document.getElementById('patientIdDisplay').innerText = '王XX';
+  // 在這裡可以根據病人 ID 進行相應的資料處理
+} else {
+  document.getElementById('patientIdDisplay').innerText = '未指定病人ID';
 }
 </script>
 

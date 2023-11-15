@@ -7,87 +7,114 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-}
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
 
-.container {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
 
-h1 {
-  color: #333;
-}
+    h1 {
+      color: #333;
+    }
 
-.patient-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-}
+    .patient-table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
 
-th {
-  background-color: #4caf50;
-  color: white;
-}
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
 
-span {
-  display: block;
-  margin-bottom: 16px;
-  font-weight: bold;
-  color: #333;
-}
+    span {
+      display: block;
+      margin-bottom: 16px;
+      font-weight: bold;
+      color: #333;
+    }
 
+    /* 新增的按鈕樣式 */
+    .blue-button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .blue-button:hover {
+      background-color: #2980b9;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>歡迎！<span id="nurseName">XXX</span>護理師</h1>
-    
+
     <table class="patient-table">
       <thead>
         <tr>
           <th>病人床位</th>
           <th>病人姓名</th>
+          <th>操作</th> <!-- 新增操作列的表頭 -->
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>001</td>
           <td>王小明</td>
+          <td><button class="blue-button" onclick="redirectToPatientPage(1)">進入</button></td>
         </tr>
         <tr>
           <td>002</td>
           <td>張小華</td>
+          <td><button class="blue-button" onclick="redirectToPatientPage(2)">進入</button></td>
         </tr>
         <tr>
           <td>003</td>
           <td>陳大雄</td>
+          <td><button class="blue-button" onclick="redirectToPatientPage(3)">進入</button></td>
         </tr>
         <tr>
           <td>004</td>
           <td>林小美</td>
+          <td><button class="blue-button" onclick="redirectToPatientPage(4)">進入</button></td>
         </tr>
         <tr>
           <td>005</td>
           <td>李中正</td>
+          <td><button class="blue-button" onclick="redirectToPatientPage(5)">進入</button></td>
         </tr>
       </tbody>
     </table>
   </div>
+  <script src="script.js">
+  </script>
+  <script>
+    function redirectToPatientPage(patientId) {
+     window.location.href = 'medicine.html?id=' + patientId;
+    }
 
-  <script src="script.js"></script>
+  </script>
+
+  
 </body>
 </html>
