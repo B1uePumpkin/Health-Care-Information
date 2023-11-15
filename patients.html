@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>護理師頁面</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h1 {
+  color: #333;
+}
+
+.patient-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+span {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>歡迎！<span id="nurseName">XXX</span>護理師</h1>
+    
+    <table class="patient-table">
+      <thead>
+        <tr>
+          <th>病人床位</th>
+          <th>病人姓名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>001</td>
+          <td>王小明</td>
+        </tr>
+        <tr>
+          <td>002</td>
+          <td>張小華</td>
+        </tr>
+        <tr>
+          <td>003</td>
+          <td>陳大雄</td>
+        </tr>
+        <tr>
+          <td>004</td>
+          <td>林小美</td>
+        </tr>
+        <tr>
+          <td>005</td>
+          <td>李中正</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

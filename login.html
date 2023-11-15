@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登入系統</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+    }
+
+    .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    }
+
+    label {
+    display: block;
+    margin-bottom: 8px;
+    }
+
+    input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    }
+
+    button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+
+    button:hover {
+    background-color: #45a049;
+    }
+
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <form id="loginForm">
+      <label for="username">帳號：</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">密碼：</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="button" onclick="login()">登入</button>
+    </form>
+    <p id="message"></p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+    
+      if (username === "abc" && password === "123") {
+        window.location.href = "chooseSys.html"; 
+      } else {
+        alert("帳號或密碼錯誤");
+      }
+    }
+    </script>
+</body>
+</html>

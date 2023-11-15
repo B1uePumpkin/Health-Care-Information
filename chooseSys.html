@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>醫療系統</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ecf0f1; /* 淡藍色背景 */
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      background-color: #3498db; /* 藍色按鈕 */
+      transition: background-color 0.3s;
+      display: block;
+      width: 100%; /* 讓按鈕寬度填滿容器 */
+    }
+
+    button:hover {
+      background-color: #2980b9; /* 滑鼠移過時的顏色 */
+    }
+
+    /* 將第二個按鈕的背景色從紅色改為綠色 */
+    button:nth-child(2) {
+      background-color: #2ecc71; /* 綠色按鈕 */
+    }
+
+    button:nth-child(2):hover {
+      background-color: #27ae60; /* 綠色按鈕的滑鼠移過時的顏色 */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button onclick="redirectToMedicationSystem()">給藥系統</button>
+    <button onclick="redirectToVitalSignsSystem()">生命徵象系統</button>
+  </div>
+
+  <script>
+    function redirectToMedicationSystem() {
+      // 導向至給藥系統的相關操作
+      window.location.href = "patients.html";
+    }
+
+    function redirectToVitalSignsSystem() {
+      // 導向至生命徵象系統的相關操作
+      window.location.href = "vitalsigns.html";
+    }
+  </script>
+</body>
+</html>

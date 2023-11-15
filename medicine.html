@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>病患資料</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .patient-info { background-color: #ddd; padding: 20px; }
+  .patient-info header { display: flex; justify-content: space-between; }
+  .patient-info header div { flex-basis: 20%; }
+  .medicines { overflow-y: scroll; height: 150px; background-color: #cce; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 8px; }
+  th { background-color: #99b; color: white; }
+  .medicine-details { display: none; }
+</style>
+</head>
+<body>
+
+<div class="patient-info">
+  <header>
+    <div>病人姓名：</div>
+    <div>病歷號碼：</div>
+    <div>病房號碼：</div>
+    <div>住院日期：</div>
+  </header>
+  <!-- 病人的具體資料 -->
+</div>
+
+<div class="medicines">
+  <table>
+    <thead>
+      <tr>
+        <th>藥品序號</th>
+        <th>藥品名稱</th>
+        <th>劑型/劑量</th>
+        <th>用法用量</th>
+        <th>給藥時間</th>
+        <th>是否給藥</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 藥品項目 -->
+      <tr class="medicine-item" onclick="toggleDetails(event)">
+        <td>001</td>
+        <td>藥品A</td>
+        <td>劑型/劑量</td>
+        <td>每日三次</td>
+        <td>餐後</td>
+        <td>是</td>
+      </tr>
+      <tr class="medicine-details">
+        <td colspan="6">藥品A的詳細資料...</td>
+      </tr>
+      <!-- 其他藥品項目 -->
+      <tr class="medicine-item" onclick="toggleDetails(event)">
+        <td>002</td>
+        <td>藥品B</td>
+        <td>劑型/劑量</td>
+        <td>每日三次</td>
+        <td>餐後</td>
+        <td>是</td>
+      </tr>
+      <tr class="medicine-details">
+        <td colspan="6">藥品B的詳細資料...</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+function toggleDetails(event) {
+  // 尋找目標行的下一行作為詳細資料行
+  var detailRow = event.currentTarget.nextElementSibling;
+  // 切換詳細資料行的顯示與隱藏
+  detailRow.style.display = detailRow.style.display === 'table-row' ? 'none' : 'table-row';
+}
+</script>
+
+</body>
+</html>
