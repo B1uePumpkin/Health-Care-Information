@@ -1,0 +1,34 @@
+{
+    "id": "002",
+    "name": "張小華",
+    "room": "101",
+    "admissionDate": "2023-01-02",
+    "medicines": [
+      {
+        "serialNumber": "001",
+        "name": "藥品A",
+        "dosageForm": "劑型/劑量",
+        "usage": "每日三次",
+        "administrationTime": "餐後",
+        "isMedicationGiven": true
+      },
+      {
+        "serialNumber": "002",
+        "name": "藥品B",
+        "dosageForm": "劑型/劑量",
+        "usage": "每日三次",
+        "administrationTime": "餐後",
+        "isMedicationGiven": false
+      },
+      {
+        "serialNumber": "003",
+        "name": "藥品D",
+        "dosageForm": "劑型/劑量",
+        "usage": "每日三次",
+        "administrationTime": "餐後",
+        "isMedicationGiven": false
+      }
+      
+    ]
+  }
+  

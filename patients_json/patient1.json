@@ -1,6 +1,36 @@
 {
   "id": 1,
   "name": "王小明",
-  "bedNumber": "001",
-  "otherData": "其他相關資料1"
+  "room": "101",
+  "admissionDate": "2023-01-01",
+  "medicines": [
+    {
+      "serialNumber": "001",
+      "name": "藥品A",
+      "dosageForm": "片劑/10毫克",
+      "usage": "每日三次",
+      "administrationTime": "餐後"
+    },
+    {
+      "serialNumber": "002",
+      "name": "藥品B",
+      "dosageForm": "膠囊/20毫克",
+      "usage": "每日兩次",
+      "administrationTime": "飯前"
+    },
+    {
+      "serialNumber": "003",
+      "name": "藥品C",
+      "dosageForm": "膠囊/20毫克",
+      "usage": "每日兩次",
+      "administrationTime": "飯前"
+    },
+    {
+      "serialNumber": "004",
+      "name": "藥品X",
+      "dosageForm": "膠囊/20毫克",
+      "usage": "每日兩次",
+      "administrationTime": "飯前"
+    }
+  ]
 }

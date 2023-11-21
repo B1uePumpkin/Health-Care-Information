@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>病患資料</title>
-<style>
-  body { font-family: Arial, sans-serif; }
-  .patient-info { background-color: #ddd; padding: 20px; }
-  .patient-info header { display: flex; justify-content: space-between; }
-  .patient-info header div { flex-basis: 20%; }
-  .medicines { overflow-y: scroll; height: 150px; background-color: #cce; }
-  table { width: 100%; border-collapse: collapse; }
-  th, td { text-align: left; padding: 8px; }
-  th { background-color: #99b; color: white; }
-  .medicine-details { display: none; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>病患資料</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .patient-info { background-color: #ddd; padding: 20px; }
+    .patient-info header { display: flex; justify-content: space-between; }
+    .patient-info header div { flex-basis: 20%; }
+    .medicines { overflow-y: scroll; height: 150px; background-color: #cce; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 8px; }
+    th { background-color: #99b; color: white; }
+    .medicine-item { cursor: pointer; }
+    .medicine-details { display: none; }
+    .selected-row { background-color: #c8e6c9; }
+  </style>
 </head>
 <body>
 
 <div class="patient-info">
   <header>
-    <div>病人姓名：<div id="patientIdDisplay"></div></div>
-    <div>病歷號碼：</div>
-    <div>病房號碼：</div>
-    <div>住院日期：</div>
+    <div>病人姓名：<div id="patientNameDisplay"></div></div>
+    <div>病歷號碼：<div id="patientIdDisplay"></div></div>
+    <div>病房號碼：<div id="patientRoomDisplay"></div></div>
+    <div>住院日期：<div id="admissionDateDisplay"></div></div>
   </header>
   <!-- 病人的具體資料 -->
 </div>
@@ -37,37 +39,17 @@
         <th>劑型/劑量</th>
         <th>用法用量</th>
         <th>給藥時間</th>
-        <th>是否給藥</th>
+        <th>手動勾選</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="medicineTableBody">
       <!-- 藥品項目 -->
-      <tr class="medicine-item" onclick="toggleDetails(event)">
-        <td>001</td>
-        <td>藥品A</td>
-        <td>劑型/劑量</td>
-        <td>每日三次</td>
-        <td>餐後</td>
-        <td>是</td>
-      </tr>
-      <tr class="medicine-details">
-        <td colspan="6">藥品A的詳細資料...</td>
-      </tr>
-      <!-- 其他藥品項目 -->
-      <tr class="medicine-item" onclick="toggleDetails(event)">
-        <td>002</td>
-        <td>藥品B</td>
-        <td>劑型/劑量</td>
-        <td>每日三次</td>
-        <td>餐後</td>
-        <td>是</td>
-      </tr>
-      <tr class="medicine-details">
-        <td colspan="6">藥品B的詳細資料...</td>
-      </tr>
     </tbody>
   </table>
 </div>
+
+<button onclick="saveSelection()">儲存</button>
+<button onclick="goBack()">返回</button>
 
 <script>
 function toggleDetails(event) {
@@ -75,11 +57,62 @@ function toggleDetails(event) {
   var detailRow = event.currentTarget.nextElementSibling;
   // 切換詳細資料行的顯示與隱藏
   detailRow.style.display = detailRow.style.display === 'table-row' ? 'none' : 'table-row';
+
+  // 將選中的藥品行添加或移除選中的 CSS 類
+  event.currentTarget.classList.toggle('selected-row');
 }
+
+function createMedicineRow(medicine, selectedMedicines) {
+  const tr = document.createElement('tr');
+  tr.className = 'medicine-item';
+  tr.onclick = function(event) { toggleDetails(event); };
+
+  tr.innerHTML = `
+    <td>${medicine.serialNumber}</td>
+    <td>${medicine.name}</td>
+    <td>${medicine.dosageForm}</td>
+    <td>${medicine.usage}</td>
+    <td>${medicine.administrationTime}</td>
+    <td><input type="checkbox" class="manual-checkbox" ${selectedMedicines.includes(medicine.serialNumber) ? 'checked' : ''} data-serial="${medicine.serialNumber}" onclick="event.stopPropagation();"></td>
+  `;
+
+  const detailsRow = document.createElement('tr');
+  detailsRow.className = 'medicine-details';
+  detailsRow.innerHTML = `
+    <td colspan="6">
+      <div>
+        <label>藥品序號:</label>
+        <span id="medicineSerial">${medicine.serialNumber}</span>
+      </div>
+      <div>
+        <label>藥品名稱:</label>
+        <span id="medicineName">${medicine.name}</span>
+      </div>
+      <div>
+        <label>劑型/劑量:</label>
+        <span id="medicineDosage">${medicine.dosageForm}</span>
+      </div>
+      <div>
+        <label>用法用量:</label>
+        <span id="medicineUsage">${medicine.usage}</span>
+      </div>
+      <div>
+        <label>給藥時間:</label>
+        <span id="medicineTime">${medicine.administrationTime}</span>
+      </div>
+    </td>
+  `;
+
+  return [tr, detailsRow];
+}
+
 const urlParams = new URLSearchParams(window.location.search);
 const patientId = urlParams.get('id');
-function redirectToPatientPage(patientId) {
-  console.log(patientId)
+
+// 加載保存的選擇
+const savedSelection = JSON.parse(localStorage.getItem(`selectedMedicines-${patientId}`)) || [];
+
+if (patientId) {
   // 構建 JSON 檔案路徑
   const jsonFilePath = `patients_json/patient${patientId}.json`;
 
@@ -87,19 +120,44 @@ function redirectToPatientPage(patientId) {
   fetch(jsonFilePath)
     .then(response => response.json())
     .then(patientData => {
-    const patientName = patientData.name;
-    document.getElementById('patientIdDisplay').innerText = patientName
+      document.getElementById('patientIdDisplay').innerText = `${patientData.id}`;
+      document.getElementById('patientNameDisplay').innerText = `${patientData.name}`;
+      document.getElementById('patientRoomDisplay').innerText = `${patientData.room}`;
+      document.getElementById('admissionDateDisplay').innerText = `${patientData.admissionDate}`;
+
+      // 處理藥品資料
+      const medicineTableBody = document.getElementById('medicineTableBody');
+      medicineTableBody.innerHTML = ''; // 清空先前的內容
+
+      patientData.medicines.forEach(medicine => {
+        const [medicineRow, detailsRow] = createMedicineRow(medicine, savedSelection);
+        medicineTableBody.appendChild(medicineRow);
+        medicineTableBody.appendChild(detailsRow);
+      });
     })
     .catch(error => console.error('發生錯誤：', error));
-}
-
-/*
-if (patientId) {
-  document.getElementById('patientIdDisplay').innerText = '王XX';
-  // 在這裡可以根據病人 ID 進行相應的資料處理
 } else {
   document.getElementById('patientIdDisplay').innerText = '未指定病人ID';
-}*/
+  document.getElementById('patientNameDisplay').innerText = '未指定病人姓名';
+  document.getElementById('patientRoomDisplay').innerText = '未指定病房號碼';
+  document.getElementById('admissionDateDisplay').innerText = '未指定住院日期';
+}
+
+function saveSelection() {
+  const manualCheckboxes = document.querySelectorAll('.manual-checkbox');
+  const selectedMedicines = Array.from(manualCheckboxes)
+    .filter(checkbox => checkbox.checked)
+    .map(checkbox => checkbox.dataset.serial);
+
+  // 保存選中的藥品序號到本地存儲，使用病人ID作為前綴
+  localStorage.setItem(`selectedMedicines-${patientId}`, JSON.stringify(selectedMedicines));
+
+  alert(`已選中的藥品序號：${selectedMedicines.join(', ')}`);
+}
+
+function goBack() {
+  window.location.href = 'patients.html';
+}
 </script>
 
 </body>
