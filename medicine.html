@@ -13,12 +13,14 @@
 <body>
 
 <div class="patient-info">
+  <div class="content">
   <header>
     <div>病人姓名：<div id="patientNameDisplay"></div></div>
     <div>病歷號碼：<div id="patientIdDisplay"></div></div>
     <div>病房號碼：<div id="patientRoomDisplay"></div></div>
     <div>住院日期：<div id="admissionDateDisplay"></div></div>
   </header>
+  </div>
   <!-- 病人的具體資料 -->
 </div>
 
@@ -40,9 +42,11 @@
   </table>
 </div>
 
-<button onclick="saveSelection()">儲存</button>
-<button onclick="goBack()">返回</button>
 
+<div class="button-group">
+  <button onclick="saveSelection()">儲存</button>
+  <button onclick="goBack()">返回</button>
+</div>
 
 </body>
 </html>
