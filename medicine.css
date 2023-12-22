@@ -1,0 +1,41 @@
+
+body { 
+    font-family: Arial, sans-serif; 
+}
+.patient-info { 
+    background-color: #ddd;
+    padding: 20px;
+}
+.patient-info header { 
+    display: flex;
+    justify-content: space-between;
+}
+.patient-info header div {
+    flex-basis: 20%;
+}
+.medicines {
+    overflow-y: scroll;
+    height: 150px;
+    background-color: #cce;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #99b;
+    color: white;
+}
+.medicine-item {
+    cursor: pointer;
+}
+.medicine-details {
+    display: none;
+}
+.selected-row {
+    background-color: #c8e6c9;
+}

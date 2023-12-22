@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XX醫院護理系統</title> <!-- 修改標題 -->  
+  <link rel="stylesheet" href="login.css">
+  <script src="login.js"></script>
+</head>
+<body>
+  <h1>護理系統登入</h1> <!-- 新增標題 -->
+  <div class="container">
+    <form id="loginForm">
+      <label for="username">帳號：</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">密碼：</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="button" onclick="login()">登入</button>
+    </form>
+    <p id="message"></p>
+  </div>
+</body>
+</html>

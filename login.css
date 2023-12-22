@@ -1,0 +1,60 @@
+body {
+      font-family: Arial, sans-serif;
+      color: #273384;
+
+      background-image: url("login_choose\ bgp.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+
+    }
+
+    .container {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      max-width: 400px;
+      padding: 20px;
+      border: none;
+      border-radius: 8px;
+      transform: translate(-50%, -50%);
+      background-color: transparent;
+    }
+    h1 {
+
+      text-align: center;
+      font-size: 100px;
+      white-space: nowrap;
+      width: 100%;  /* 將寬度設定為100% */
+      overflow-wrap: break-word;  /* 允許在長單詞中換行 */
+      margin-top: 15%;
+    }
+
+    label {
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    input {
+      display: inline-block;
+      width: 70%;  /* 可能需要調整寬度以適應label */
+      padding: 8px;
+      margin-bottom: 16px;
+      border: none;
+      border-bottom: 1px solid #000;
+      background-color: transparent;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      background-color: #273384;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #b1b8e6;
+    }

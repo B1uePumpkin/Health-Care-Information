@@ -1,0 +1,38 @@
+body {
+      font-family: Arial, sans-serif;
+      background-image: url("login_choose\ bgp.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;  /* 增加容器的高度 */
+    }
+
+    button {
+      background-color: #4C9AFF;
+      color: white;
+      padding: 20px 40px;  /* 增加按鈕的大小 */
+      font-size: 24px;  /* 增加字體的大小 */
+      margin: 5px 0;
+      -webkit-clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+    }
+    
+
+    button:hover {
+      background-color: #b1b8e6; /* 滑鼠移過時的顏色 */
+    }

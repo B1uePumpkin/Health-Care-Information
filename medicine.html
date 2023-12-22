@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>病患資料</title>
+  <link rel="stylesheet" href="medicine.css">
+  <script src="medicine.js"></script>
+
+
+</head>
+
+<body>
+
+<div class="patient-info">
+  <header>
+    <div>病人姓名：<div id="patientNameDisplay"></div></div>
+    <div>病歷號碼：<div id="patientIdDisplay"></div></div>
+    <div>病房號碼：<div id="patientRoomDisplay"></div></div>
+    <div>住院日期：<div id="admissionDateDisplay"></div></div>
+  </header>
+  <!-- 病人的具體資料 -->
+</div>
+
+<div class="medicines">
+  <table>
+    <thead>
+      <tr>
+        <th>藥品序號</th>
+        <th>藥品名稱</th>
+        <th>劑型/劑量</th>
+        <th>用法用量</th>
+        <th>給藥時間</th>
+        <th>手動勾選</th>
+      </tr>
+    </thead>
+    <tbody id="medicineTableBody">
+      <!-- 藥品項目 -->
+    </tbody>
+  </table>
+</div>
+
+<button onclick="saveSelection()">儲存</button>
+<button onclick="goBack()">返回</button>
+
+
+</body>
+</html>
