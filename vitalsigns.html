@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>醫療系統</title>
+  <link rel="stylesheet" href="vitalsigns.css">
+  <script src="vitalsigns.js"></script>
+</head>
+<body>
+    <div class="container">
+      <h1>歡迎！<span id="nurseName">abc</span>護理師</h1>
+  
+      <table class="patient-table">
+        <thead>
+          <tr>
+            <th>病人床位</th>
+            <th>病人姓名</th>
+            <th>操作</th> <!-- 新增操作列的表頭 -->
+          </tr>
+        </thead>
+        <tbody id="patientTableBody">
+          <tr>
+            <td>001</td>
+            <td>王小明</td>
+            <td><button class="blue-button" onclick="redirectToVitalsignsDetails(1)">進入</button></td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>張小華</td>
+            <td><button class="blue-button" onclick="redirectToVitalsignsDetails(2)">進入</button></td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td>陳大雄</td>
+            <td><button class="blue-button" onclick="redirectToVitalsignsDetails(3)">進入</button></td>
+          </tr>
+          <tr>
+            <td>004</td>
+            <td>林小美</td>
+            <td><button class="blue-button" onclick="redirectToVitalsignsDetails(4)">進入</button></td>
+          </tr>
+          <tr>
+            <td>005</td>
+            <td>李中正</td>
+            <td><button class="blue-button" onclick="redirectToVitalsignsDetails(5)">進入</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
