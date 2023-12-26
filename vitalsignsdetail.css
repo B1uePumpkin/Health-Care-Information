@@ -1,0 +1,66 @@
+body { 
+    font-family: Arial, sans-serif; 
+    background-image: url("medicine\ bgp.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.patient-info { 
+    background-color: #000; /* 改成黑色背景 */
+    color: #fff; /* 改成白色文字 */
+    padding: 20px;
+    margin-top: 20px; /* 往下移一點，你可以根據需要調整這個值 */
+    transform: skew(30deg); /* 讓元素變成平行四邊形，你可以根據需要調整這個值 */
+}
+
+.patient-info .content > * { 
+    border-left: 1px dashed #fff; /* 在左邊添加白色虛線 */
+    border-right: 1px dashed #fff; /* 在右邊添加白色虛線 */
+    padding: 0 10px; /* 添加左右內距，讓虛線與內容有一些間距 */
+    transform: skew(-30deg);
+}
+
+.patient-info .content > *:first-child { 
+    border-left: none; /* 移除第一項的左邊虛線 */
+}
+
+.patient-info .content > *:last-child { 
+    border-right: none; /* 移除最後一項的右邊虛線 */
+}
+.patient-info header { 
+    display: flex;
+    justify-content: space-between;
+}
+.patient-info header div {
+    flex-basis: 20%;
+}
+table {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+
+.title{
+    background-color: green;
+    color: white
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.vitalsignsdetail {
+    width: 80%; /* 或根據需要調整表格的寬度 */
+    margin: 0 auto; /* 自動邊距用於水平居中 */
+    padding: 20px;
+}
+.data{
+    color: black;
+}

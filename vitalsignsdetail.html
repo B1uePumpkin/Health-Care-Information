@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>醫療系統</title>
+  <link rel="stylesheet" href="vitalsignsdetail.css">
+  
+</head>
+<body>
+    <div class="patient-info">
+      <div class="content">
+        <header>
+          <div>病人姓名：<div id="patientNameDisplay"></div></div>
+          <div>病歷號碼：<div id="patientIdDisplay"></div></div>
+          <div>病房號碼：<div id="patientRoomDisplay"></div></div>
+          <div>住院日期：<div id="admissionDateDisplay"></div></div>
+        </header>
+      </div>
+    </div>
+    <div class="vitalsignsdetail">
+      <div>
+        <table id="healthData">
+          <tr class="title">
+              <th>姓名</th>
+              <th>心律</th>
+              <th>血壓</th>
+              <th>體溫</th>
+          </tr>
+          <tr class="data">
+            <th id="name"></th>
+            <th id="BT"></th>
+            <th id="BP"></th>
+            <th id="HR"></th>
+          </tr>
+        </table>
+      </div> 
+    </div>   
+    <script src="vitalsignsdetail.js"></script>
+</body>
+</html>
