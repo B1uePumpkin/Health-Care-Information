@@ -35,27 +35,30 @@ body {
     flex-basis: 20%;
 }
 .medicines {
-    position: relative; /* 讓元素可以被定位 */
-    margin-top: 10%; /* 將元素的頂部設定在父元素的 10% 處 */
-    width: 80%; /* 將元素的寬度設定為父元素的 80% */
-    margin-left: auto; /* 讓元素在水平方向上自動居中 */
-    margin-right: auto; /* 讓元素在水平方向上自動居中 */
-    overflow-y: auto; /* 只有當需要時才會出現滾動條 */
+    position: relative;
+    margin-top: 10%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto; /* 添加垂直滾動條 */
+    max-height: 30vh; /* 設定最大高度，防止內容過長 */
     background-color: #fff;
 }
 table {
-    position: sticky; /* 讓元素在滾動時保持固定 */
-    top: 0; /* 在滾動時，元素會停在距離視窗頂部 0px 的位置 */
     width: 100%;
     border-collapse: collapse;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 2; /* 保持在最上層 */
 }
+
 th, td {
     text-align: left;
-    padding: 24px 8px; /* 將上下內距拉長三倍 */
+    padding: 24px 8px;
 }
+
 th {
-    position: sticky; /* 讓元素在滾動時保持固定 */
-    top: 0; /* 在滾動時，元素會停在距離視窗頂部 0px 的位置 */
     background-color: #86D0EF;
     color: white;
 }
@@ -64,10 +67,13 @@ th {
 }
 .medicine-details {
     display: none;
-    position: absolute; /* 讓元素可以被定位 */
-    width: 100%; /* 將元素的寬度設定為父元素的 100% */
-    background-color: #fff; /* 為元素添加背景色，以避免內容重疊 */
+    position: relative; /* 將元素相對於正常的文檔流定位 */
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+    margin-top: 40px; /* 設定為藥品項目的高度，避免重疊 */
 }
+
 .selected-row {
     background-color: #c8e6c9;
 }

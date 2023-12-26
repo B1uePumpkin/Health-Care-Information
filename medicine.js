@@ -46,6 +46,10 @@ function createMedicineRow(medicine, selectedMedicines) {
         <label>給藥時間:</label>
         <span id="medicineTime">${medicine.administrationTime}</span>
       </div>
+      <div>
+        <label>警告:</label>
+        <span id="medicineWarning">${medicine.warning}</span>
+      </div>
     </td>
   `;
 
@@ -76,17 +80,24 @@ if (patientId) {
       medicineTableBody.innerHTML = ''; // 清空先前的內容
 
       patientData.medicines.forEach(medicine => {
-        const [medicineRow, detailsRow] = createMedicineRow(medicine, savedSelection);
-        medicineTableBody.appendChild(medicineRow);
-        medicineTableBody.appendChild(detailsRow);
+        // 根據體溫是否高於36度，動態修改警告
+        if (medicine.name === '藥品A' && parseFloat(patientData.temperature) > 36) {
+          medicine.warning = "體溫過高";
+          const [medicineRow, detailsRow] = createMedicineRow(medicine, savedSelection);
+          medicineRow.style.backgroundColor = 'red';
+          medicineRow.style.color = 'white';
+          medicineTableBody.appendChild(medicineRow);
+          medicineTableBody.appendChild(detailsRow);
+        } else {
+          const [medicineRow, detailsRow] = createMedicineRow(medicine, savedSelection);
+          medicineTableBody.appendChild(medicineRow);
+          medicineTableBody.appendChild(detailsRow);
+        }
       });
     })
     .catch(error => console.error('發生錯誤：', error));
 } else {
-  document.getElementById('patientIdDisplay').innerText = '未指定病人ID';
-  document.getElementById('patientNameDisplay').innerText = '未指定病人姓名';
-  document.getElementById('patientRoomDisplay').innerText = '未指定病房號碼';
-  document.getElementById('admissionDateDisplay').innerText = '未指定住院日期';
+  // ...
 }
 
 function saveSelection() {
