@@ -35,7 +35,7 @@ th, td {
 }
 
 th {
-  background-color: #4caf50;
+  background-color: #86D0EF;
   color: white;
 }
 
@@ -48,7 +48,7 @@ span {
 
 /* 新增的按鈕樣式 */
 .blue-button {
-  background-color: #3498db;
+  background-color: #2980b9;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -57,5 +57,5 @@ span {
 }
 
 .blue-button:hover {
-  background-color: #2980b9;
+  background-color: #273384;
 }
