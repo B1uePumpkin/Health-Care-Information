@@ -81,7 +81,7 @@ if (patientId) {
 
       patientData.medicines.forEach(medicine => {
         // 根據體溫是否高於36度，動態修改警告
-        if (medicine.name === '藥品A' && parseFloat(patientData.temperature) > 36) {
+        if (medicine.name === '藥品A' && parseFloat(patientData.HR) > 37) {
           medicine.warning = "體溫過高";
           const [medicineRow, detailsRow] = createMedicineRow(medicine, savedSelection);
           medicineRow.style.backgroundColor = 'red';
