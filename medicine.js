@@ -1,3 +1,16 @@
+window.onload = function() {
+  // 從本地存儲中獲取 radio 的狀態
+  const radioStatus = JSON.parse(localStorage.getItem(`confirmedMedicines-${patientId}`) || '{}');
+
+  // 使用 radio 的狀態來設定每個 radio 的選中狀態
+  for (let id in radioStatus) {
+    const radio = document.getElementById(id);
+    if (radio) {
+      radio.checked = radioStatus[id];
+    }
+  }
+};
+
 function toggleDetails(event) {
   // 尋找目標行的下一行作為詳細資料行
   var detailRow = event.currentTarget.nextElementSibling;
@@ -13,13 +26,21 @@ function createMedicineRow(medicine, selectedMedicines) {
   tr.className = 'medicine-item';
   tr.onclick = function(event) { toggleDetails(event); };
 
+  
   tr.innerHTML = `
     <td>${medicine.serialNumber}</td>
     <td>${medicine.name}</td>
     <td>${medicine.dosageForm}</td>
     <td>${medicine.usage}</td>
     <td>${medicine.administrationTime}</td>
-    <td><input type="checkbox" class="manual-checkbox" ${selectedMedicines.includes(medicine.serialNumber) ? 'checked' : ''} data-serial="${medicine.serialNumber}" onclick="event.stopPropagation();"></td>
+    <td>
+      <input type="radio" name="medicineOption${medicine.serialNumber}" class="manual-radio" id="unmarked${medicine.serialNumber}" data-serial="${medicine.serialNumber}" onclick="event.stopPropagation();">
+      <label for="unmarked${medicine.serialNumber}">未給藥</label>
+      <input type="radio" name="medicineOption${medicine.serialNumber}" class="manual-radio" id="confirm${medicine.serialNumber}" ${selectedMedicines.includes(medicine.serialNumber) ? 'checked' : ''} data-serial="${medicine.serialNumber}" onclick="event.stopPropagation();">
+      <label for="confirm${medicine.serialNumber}">已給藥</label>
+      <input type="radio" name="medicineOption${medicine.serialNumber}" class="manual-radio" id="delay${medicine.serialNumber}" ${selectedMedicines.includes(medicine.serialNumber) ? 'checked' : ''} data-serial="${medicine.serialNumber}" onclick="event.stopPropagation();">
+      <label for="delay${medicine.serialNumber}">暫時不給藥</label>
+    </td>
   `;
 
   const detailsRow = document.createElement('tr');
@@ -101,17 +122,22 @@ if (patientId) {
 }
 
 function saveSelection() {
-  const manualCheckboxes = document.querySelectorAll('.manual-checkbox');
-  const selectedMedicines = Array.from(manualCheckboxes)
-    .filter(checkbox => checkbox.checked)
-    .map(checkbox => checkbox.dataset.serial);
+  const manualRadios = document.querySelectorAll('.manual-radio');
+  const radioStatus = {};
+  const selectedMedicines = Array.from(manualRadios)
+  .filter(radio => radio.checked && radio.id.includes('confirm'))
+  .map(radio => radio.dataset.serial);
+  
 
-  // 保存選中的藥品序號到本地存儲，使用病人ID作為前綴
-  localStorage.setItem(`selectedMedicines-${patientId}`, JSON.stringify(selectedMedicines));
+  manualRadios.forEach(radio => {
+    radioStatus[radio.id] = radio.checked;
+  });
 
-  alert(`已選中的藥品序號：${selectedMedicines.join(', ')}`);
-}
+  // 保存 radio 的狀態到本地存儲，使用病人ID作為前綴
+  localStorage.setItem(`confirmedMedicines-${patientId}`, JSON.stringify(selectedMedicines));
 
-function goBack() {
+  const currentTime = new Date();
+  const formattedTime = `${currentTime.getFullYear()}/${currentTime.getMonth() + 1}/${currentTime.getDate()}---${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
+  alert(`已選中且已給藥的藥品序號：${selectedMedicines.join(', ')}\n護理師 : abc 護理師\n最後儲存時間：${formattedTime}`);
   window.location.href = 'patients.html';
 }

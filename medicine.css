@@ -20,13 +20,7 @@ body {
     transform: skew(-30deg);
 }
 
-.patient-info .content > *:first-child { 
-    border-left: none; /* 移除第一項的左邊虛線 */
-}
 
-.patient-info .content > *:last-child { 
-    border-right: none; /* 移除最後一項的右邊虛線 */
-}
 .patient-info header { 
     display: flex;
     justify-content: space-between;
