@@ -35,7 +35,7 @@ function createMedicineRow(medicine, selectedMedicines) {
     <td>${medicine.administrationTime}</td>
     <td>
       <input type="radio" name="medicineOption${medicine.serialNumber}" class="manual-radio" id="unmarked${medicine.serialNumber}" data-serial="${medicine.serialNumber}" onclick="event.stopPropagation();">
-      <label for="unmarked${medicine.serialNumber}">未給藥</label>
+      <label for="unmarked${medicine.serialNumber}">不給藥</label>
       <input type="radio" name="medicineOption${medicine.serialNumber}" class="manual-radio" id="confirm${medicine.serialNumber}" ${selectedMedicines.includes(medicine.serialNumber) ? 'checked' : ''} data-serial="${medicine.serialNumber}" onclick="event.stopPropagation();">
       <label for="confirm${medicine.serialNumber}">已給藥</label>
       <input type="radio" name="medicineOption${medicine.serialNumber}" class="manual-radio" id="delay${medicine.serialNumber}" ${selectedMedicines.includes(medicine.serialNumber) ? 'checked' : ''} data-serial="${medicine.serialNumber}" onclick="event.stopPropagation();">
@@ -71,6 +71,10 @@ function createMedicineRow(medicine, selectedMedicines) {
         <label>警告:</label>
         <span id="medicineWarning">${medicine.warning}</span>
       </div>
+      <div>
+        <label>藥品圖片:</label>
+        <img src="medicineA.jpg" alt="${medicine.name}" width="500" height="400">
+      </div>
     </td>
   `;
 
@@ -102,8 +106,8 @@ if (patientId) {
 
       patientData.medicines.forEach(medicine => {
         // 根據體溫是否高於36度，動態修改警告
-        if (medicine.name === '藥品A' && parseFloat(patientData.HR) > 37) {
-          medicine.warning = "體溫過高";
+        if (medicine.name === 'Aliskiren' && parseFloat(patientData.BP_low) < 85) {
+          medicine.warning = "脈搏<50 bpm或低血壓收縮壓<85 mmHg停止使用";
           const [medicineRow, detailsRow] = createMedicineRow(medicine, savedSelection);
           medicineRow.style.backgroundColor = 'red';
           medicineRow.style.color = 'white';

@@ -1,0 +1,39 @@
+[{
+    "station": "護理站1",
+    "patients": [
+      {
+        "bed": "A1",
+        "name": "王小明"
+      },
+      {
+        "bed": "A2",
+        "name": "李小美"
+      }
+    ]
+    },
+    {
+    "station": "護理站2",
+    "patients": [
+      {
+        "bed": "B1",
+        "name": "張小強"
+      },
+      {
+        "bed": "B2",
+        "name": "陳小華"
+      }
+    ]
+    },
+    {
+    "station": "護理站3",
+    "patients": [
+      {
+        "bed": "C1",
+        "name": "林小玉"
+      },
+      {
+        "bed": "C2",
+        "name": "黃小琪"
+      }
+    ]
+}]

@@ -9,28 +9,28 @@
       "name": "藥品A",
       "dosageForm": "片劑/10毫克",
       "usage": "每日三次",
-      "administrationTime": "餐後"
+      "administrationTime": "8:00 / 16:00 / 24:00"
     },
     {
       "serialNumber": "002",
       "name": "藥品B",
       "dosageForm": "膠囊/20毫克",
       "usage": "每日兩次",
-      "administrationTime": "飯前"
+      "administrationTime": "10:00 / 15:00"
     },
     {
       "serialNumber": "003",
       "name": "藥品C",
       "dosageForm": "膠囊/20毫克",
-      "usage": "每日兩次",
-      "administrationTime": "飯前"
+      "usage": "每日一次",
+      "administrationTime": "15:00"
     },
     {
       "serialNumber": "004",
       "name": "藥品X",
       "dosageForm": "膠囊/20毫克",
-      "usage": "每日兩次",
-      "administrationTime": "飯前"
+      "usage": "每日一次",
+      "administrationTime": "16:00"
     }
     
   ],

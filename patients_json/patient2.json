@@ -6,10 +6,10 @@
     "medicines": [
       {
         "serialNumber": "001",
-        "name": "藥品A",
+        "name": "Aliskiren",
         "dosageForm": "劑型/劑量",
-        "usage": "每日三次",
-        "administrationTime": "餐後",
+        "usage": "每日一次",
+        "administrationTime": "16:00",
         "isMedicationGiven": true
       },
       {
@@ -17,7 +17,7 @@
         "name": "藥品B",
         "dosageForm": "劑型/劑量",
         "usage": "每日三次",
-        "administrationTime": "餐後",
+        "administrationTime": "8:00 / 15:00 / 22:00",
         "isMedicationGiven": false
       },
       {
@@ -25,13 +25,14 @@
         "name": "藥品D",
         "dosageForm": "劑型/劑量",
         "usage": "每日三次",
-        "administrationTime": "餐後",
+        "administrationTime": "8:00 / 15:00 / 22:00",
         "isMedicationGiven": false
       }
       
     ],
     "BT":"63",
-    "BP":"131/82",
+    "BP_high":"131",
+    "BP_low":"81",
     "HR":"38.1"
   }
   
