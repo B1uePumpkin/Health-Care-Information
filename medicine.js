@@ -72,9 +72,14 @@ function createMedicineRow(medicine, selectedMedicines) {
         <span id="medicineWarning">${medicine.warning}</span>
       </div>
       <div>
+        <label>病人血壓:</label>
+        <span id="patientBPLow">131/81</span>
+      </div>
+      <div>
         <label>藥品圖片:</label>
         <img src="medicineA.jpg" alt="${medicine.name}" width="500" height="400">
       </div>
+      
     </td>
   `;
 
@@ -105,7 +110,7 @@ if (patientId) {
       medicineTableBody.innerHTML = ''; // 清空先前的內容
 
       patientData.medicines.forEach(medicine => {
-        // 根據體溫是否高於36度，動態修改警告
+        // 處理警告
         if (medicine.name === 'Aliskiren' && parseFloat(patientData.BP_low) < 85) {
           medicine.warning = "脈搏<50 bpm或低血壓收縮壓<85 mmHg停止使用";
           const [medicineRow, detailsRow] = createMedicineRow(medicine, savedSelection);
